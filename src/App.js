@@ -49,8 +49,15 @@ class App extends Component {
     )
   }
 
-  // Creating a function that takes in the user input values and outputs two values
+  // Creating a function that takes in the user-inputted array and outputs two values
   handleInputArray = (inputArrayString, inputIntegerString) => {
+    // Checking for an empty string (starting condition from initial state)
+    if (inputArrayString.trim() === "") {
+      this.setState({
+        arrayOutput: "Please enter an array of numbers."
+      })
+      return "Please enter an array of numbers."
+    }
     // Parsing the inputted string of numbers as an array
     const inputInteger = parseInt(inputIntegerString);
     let inputArray = inputArrayString.split(",").map(Number);
@@ -106,7 +113,7 @@ class App extends Component {
     return { numbersHigherCounter, numbersLowerCounter };
   }
 
-  // Creating a function that takes in the user input values and outputs a new string
+  // Creating a function that takes in the user-inputted string and outputs a new string
   handleInputString = (inputString, inputInteger) => {
     // Checking if the input is able to be sorted based on the user input
     if (inputString.toString().trim().length < 1) {
