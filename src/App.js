@@ -5,8 +5,8 @@ class App extends Component {
   // Defining an initial state
   state = {
     userInputArrayAsString: "",
-    userInputArray: [],
     userInputIntegerForArray: 0,
+    filterSelection: "false",
     arrayOutput: "",
     userInputString: "",
     userInputIntegerForString: 0,
@@ -53,9 +53,7 @@ class App extends Component {
   handleInputArray = (inputArrayString, inputIntegerString) => {
     // Parsing the inputted string of numbers as an array
     const inputInteger = parseInt(inputIntegerString);
-    const inputArray = inputArrayString.split(",").map(Number).filter(Boolean);
-    console.log(inputArray);
-    console.log(inputInteger);
+    let inputArray = inputArrayString.split(",").map(Number);
     // Checking if the input is able to be sorted based on the user input
     if (inputArray.length < 1) {
       this.setState({
@@ -76,6 +74,16 @@ class App extends Component {
         return "Please enter an array of numbers."
       }
     }
+    // Checking whether or not to ignore duplicate entries in the inputted array
+    if (this.state.filterSelection == "true") {
+      let newInputArray = [];
+      for (let index of inputArray) {
+        if (newInputArray.indexOf(index) < 0) {
+          newInputArray.push(index);
+        }
+      }
+      inputArray = newInputArray;
+    }
     // Defining a variable to increment for each index higher than the chosen integer
     let numbersHigherCounter = 0;
     for (let index of inputArray) {
@@ -92,7 +100,8 @@ class App extends Component {
     }
     // Outputting an object with both calculated counters
     this.setState({
-      arrayOutput: `There are ${numbersHigherCounter} numbers higher than ${inputInteger} and ${numbersLowerCounter} numbers lower.`
+      // Using a ternary operator to determine proper usage of plurals
+      arrayOutput: `${(numbersHigherCounter === 1) ? "There is " : "There are "} ${numbersHigherCounter} ${(numbersHigherCounter === 1) ? "number " : "numbers "} higher than ${inputInteger} and ${numbersLowerCounter} ${(numbersLowerCounter === 1) ? "number " : "numbers "} lower.`
     })
     return { numbersHigherCounter, numbersLowerCounter };
   }
@@ -163,6 +172,13 @@ class App extends Component {
                 <input onChange={this.handleArrayChange} type="text" className="form-control" name="userInputArrayAsString" placeholder='Example: "1,5,2,1,10"' />
                 <small className="form-text text-muted">Enter a series of comma-separated numbers here.</small>
               </div>
+
+              <label className="mr-sm-2" for="filterSelection">Ignore duplicate numbers?</label>
+              <select name="filterSelection" onChange={this.handleArrayChange} className="custom-select mr-sm-2">
+                <option selected value="false">Do not ignore</option>
+                <option value="true">Ignore</option>
+              </select>
+
             </form>
           </div>
 
@@ -206,7 +222,7 @@ class App extends Component {
 
         </div>
 
-      </div>
+      </div >
 
     );
   }
