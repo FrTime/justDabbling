@@ -15,24 +15,9 @@ class App extends Component {
 
   // Setting the event handlers to run on mounting
   componentDidMount = () => {
-    this.handleInputString(this.state.userInputString, this.state.userInputIntegerForString);
     this.handleInputArray(this.state.userInputArrayAsString, this.state.userInputIntegerForArray);
+    this.handleInputString(this.state.userInputString, this.state.userInputIntegerForString);
   };
-
-  // Creating a function that will update the state when a change in the string or integer is detected
-  handleStringChange = event => {
-    // Getting the value and name of the input that triggered the change
-    const { name, value } = event.target;
-    // Updating the input's state, then using a callback to handle the string function
-    this.setState(
-      (state) => (
-        { [name]: value }
-      ),
-      () => {
-        this.handleInputString(this.state.userInputString, this.state.userInputIntegerForString);
-      }
-    )
-  }
 
   // Creating a function that will update the state when a change in the array or integer is detected
   handleArrayChange = event => {
@@ -45,6 +30,21 @@ class App extends Component {
       ),
       () => {
         this.handleInputArray(this.state.userInputArrayAsString, this.state.userInputIntegerForArray);
+      }
+    )
+  }
+
+  // Creating a function that will update the state when a change in the string or integer is detected
+  handleStringChange = event => {
+    // Getting the value and name of the input that triggered the change
+    const { name, value } = event.target;
+    // Updating the input's state, then using a callback to handle the string function
+    this.setState(
+      (state) => (
+        { [name]: value }
+      ),
+      () => {
+        this.handleInputString(this.state.userInputString, this.state.userInputIntegerForString);
       }
     )
   }
