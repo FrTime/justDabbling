@@ -155,12 +155,12 @@ class App extends Component {
             <form>
               <div className="form-group">
                 <label for="inputArrayInteger">Integer:</label>
-                <input onChange={this.handleArrayChange} type="number" className="form-control" name="userInputIntegerForArray" placeholder='"6"' default={0} />
+                <input onChange={this.handleArrayChange} type="number" className="form-control" name="userInputIntegerForArray" placeholder='Example: "6"' default={0} />
                 <small className="form-text text-muted">Enter an integer to compare the array against here.</small>
               </div>
               <div className="form-group">
                 <label for="inputArray">Series of Numbers:</label>
-                <input onChange={this.handleArrayChange} type="text" className="form-control" name="userInputArrayAsString" placeholder='"1,5,2,1,10"' />
+                <input onChange={this.handleArrayChange} type="text" className="form-control" name="userInputArrayAsString" placeholder='Example: "1,5,2,1,10"' />
                 <small className="form-text text-muted">Enter a series of comma-separated numbers here.</small>
               </div>
             </form>
@@ -186,12 +186,12 @@ class App extends Component {
             <form>
               <div className="form-group">
                 <label for="inputArrayInteger">Integer:</label>
-                <input onChange={this.handleStringChange} type="number" className="form-control" name="userInputIntegerForString" placeholder='"2"' />
+                <input onChange={this.handleStringChange} type="number" className="form-control" name="userInputIntegerForString" placeholder='Example: "2"' />
                 <small className="form-text text-muted">Enter an integer to rotate the string by here.</small>
               </div>
               <div className="form-group">
                 <label for="inputArray">String:</label>
-                <input onChange={this.handleStringChange} type="text" className="form-control" name="userInputString" placeholder='"MyString"' />
+                <input onChange={this.handleStringChange} type="text" className="form-control" name="userInputString" placeholder='Example: "MyString"' />
                 <small className="form-text text-muted">Enter a string here.</small>
               </div>
             </form>
