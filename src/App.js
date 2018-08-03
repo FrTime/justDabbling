@@ -68,14 +68,14 @@ class App extends Component {
       })
       return "Please enter a valid integer."
     }
-    // for (let index of inputArray) {
-    //   if (!Number.isInteger(index)) {
-    //     this.setState({
-    //       arrayOutput: "Please enter an array of numbers."
-    //     })
-    //     return "Please enter an array of numbers."
-    //   }
-    // }
+    for (let index of inputArray) {
+      if (!Number.isInteger(index)) {
+        this.setState({
+          arrayOutput: "Please enter an array of numbers."
+        })
+        return "Please enter an array of numbers."
+      }
+    }
     // Defining a variable to increment for each index higher than the chosen integer
     let numbersHigherCounter = 0;
     for (let index of inputArray) {
