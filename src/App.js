@@ -108,7 +108,7 @@ class App extends Component {
     // Outputting an object with both calculated counters
     this.setState({
       // Using a ternary operator to determine proper usage of plurals
-      arrayOutput: `${(numbersHigherCounter === 1) ? "There is " : "There are "} ${numbersHigherCounter} ${(numbersHigherCounter === 1) ? "number " : "numbers "} higher than ${inputInteger} and ${numbersLowerCounter} ${(numbersLowerCounter === 1) ? "number " : "numbers "} lower.`
+      arrayOutput: `${(numbersHigherCounter === 1) ? "There is " : "There are "} ${numbersHigherCounter} ${(numbersHigherCounter === 1) ? "number " : "numbers "} higher than ${inputInteger} and ${numbersLowerCounter} ${(numbersLowerCounter === 1) ? "number " : "numbers "} below.`
     })
     return { numbersHigherCounter, numbersLowerCounter };
   }
